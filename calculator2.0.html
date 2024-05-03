@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    @media (max-width:1000px) {
+      body {
+        font-family: Arial;
+        background-color: rgb(0, 0, 0);
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 400px;
+        margin-left: 1em;
+      }
+      .gray-button{
+        background-color: rgb(51, 51, 51);
+        color: white;
+      }
+      .orange-button{
+        background-color: orange;
+        color: white;
+      }
+      .calculation {
+        font-weight: bold;
+        color: white;
+      }
+      .calculation-button {
+        height: 2.5em;
+        width: 2.5em;
+        border-radius: 5em;
+        border: none;
+        font-size: 5em;
+        cursor: pointer;
+        margin-right: 0.3em;
+      }
+      .clear-button {
+        height: 3em;
+        width: 3em;
+        font-size: 5em;
+      }
+      .js-result {
+        color:white;
+        font-size: 8em;
+        margin:0;
+        margin-bottom: 1em
+      } 
+    }
+    @media (min-width:1000px) {
+      body {
+        font-family: Arial;
+        background-color: rgb(0, 0, 0);
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 5vh;
+      }
+      .gray-button{
+        background-color: rgb(51, 51, 51);
+        color: white;
+      }
+      .orange-button{
+        background-color: orange;
+        color: white;
+      }
+      .calculation {
+        font-weight: bold;
+        color: white;
+      }
+      .calculation-button {
+        height: 3em;
+        width: 3em;
+        border-radius: 3em;
+        border: none;
+        font-size: 2em;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+      .clear-button {
+        font-size: 2em;
+      }
+      .js-result {
+        color:white;
+        font-size: 50px;
+        margin:0
+      } 
+    }
+    </style>
+    <title>Калькулятор</title>
+  </head>
+  <body>
+    <div class="container">
+      <p class="js-result"></p>
+      <p>
+        <button
+        class="gray-button calculation-button" onclick="
+        updateCalculation('7');"
+        >7</button>
+
+        <button
+        class="gray-button calculation-button" onclick="
+        updateCalculation('8');"
+        >8</button>
+
+        <button
+        class="gray-button calculation-button" onclick="
+        updateCalculation('9');"
+        >9</button>
+
+        <button
+        class="orange-button calculation-button" onclick="
+        updateCalculation('*');"    
+        >×</button>
+      </p>
+      <p>
+        <button
+        class="gray-button calculation-button" onclick="
+        updateCalculation('4');"
+        >4</button>
+
+        <button
+        class="gray-button calculation-button" onclick="
+        updateCalculation('5');"
+        >5</button>
+
+        <button
+        class="gray-button calculation-button" onclick="
+        updateCalculation('6');"
+        >6</button>
+
+        <button
+        class="orange-button calculation-button" onclick="
+        updateCalculation('-');"    
+        >–</button>
+      </p>
+      <p>
+        <button class="gray-button calculation-button"
+        onclick="
+        updateCalculation('1');"
+        >1</button>
+
+        <button
+        class="gray-button calculation-button" onclick="
+        updateCalculation('2');"
+        >2</button>
+
+        <button
+        class="gray-button calculation-button" onclick="
+        updateCalculation('3');"
+        >3</button>
+
+        <button
+        class="orange-button calculation-button"onclick="
+        updateCalculation('+');"    
+        >+</button>
+      </p>
+      <p>
+        <button
+        class="gray-button calculation-button" onclick="
+        updateCalculation('0');"
+        >0</button>
+
+        <button
+        class="gray-button calculation-button" onclick="
+        updateCalculation('.');"
+        >,</button>
+
+        <button
+        class="gray-button calculation-button" onclick="
+        try {eval(calculation);
+        calculation = eval(calculation);
+        //console.log(calculation);
+        updateResult()} catch {
+          calculation = 'Ошибка'
+          updateResult();
+        }"
+        >=</button>
+
+        <button
+        class="orange-button calculation-button" onclick="
+        calculation+='/';"    
+        >÷</button>
+      </p>
+      <p>
+        <button
+        class="gray-button calculation-button clear-button" onclick="calculation='',updateResult(); "
+        >Clear</button>
+      </p>
+    </div>
+    <script>
+      let calculation = '';
+      function updateResult() {
+        document.querySelector('.js-result').innerHTML = calculation;
+      }
+      function updateCalculation(value) {
+        calculation += value;
+        //console.log(calculation);
+        updateResult();
+      }
+      document.getElementById("heading").innerHTML = calculation;
+
+    </script>
+  </body>
+</html>
